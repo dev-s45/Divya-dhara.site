@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#120a04" />
+  <title>Divya Darshan — Divya Dhara</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="assets/logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css" />
+  <script src="data.js" defer></script>
+</head>
+<body>
+    <!-- Cosmic Particles Canvas Background -->
+<canvas id="cosmicBgCanvas"></canvas>
+
+  <!-- FLOATING ISLAND NAVBAR -->
+  <!-- FLOATING ISLAND NAVBAR -->
+  <header class="floating-nav-container">
+    <a href="index.html" class="brand-logo">
+      <img src="assets/logo.png" alt="Logo" onerror="this.src='https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=100&auto=format&fit=crop'">
+      <div class="brand-text">
+        <h1>Divya Dhara</h1>
+        <span>भक्ति • ज्ञान • शांति</span>
+      </div>
+    </a>
+
+    <!-- Desktop Navigation Drawer -->
+    <nav class="desktop-menu" id="desktopNav" aria-label="Desktop Navigation">
+      <a href="index.html">Home</a>
+      <a href="darshan.html" class="active">Darshan</a>
+      <a href="knowledge.html">Sanatan Gyaan</a>
+      <a href="thought.html">Aaj Ka Vichar</a>
+      <a href="articles.html">Kathayein</a>
+    </nav>
+
+    <!-- Header Actions & Hamburger Toggle -->
+    <div class="header-right-actions">
+      <a href="articles.html" class="nav-cta">Gyaan Khojein ↗</a>
+      
+      <button class="mobile-hamburger-btn" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="darshan-page-main">
+    
+    <!-- TOP IMAGE PLACEMENT SLOT (Aap yahan apni image laga sakte hain) -->
+    <section class="darshan-hero-slot">
+      <div class="darshan-image-container">
+  <div class="darshan-img-frame">
+    <!-- Yahan apna image path lagayein -->
+    <img src="https://i.postimg.cc/25Hmt1yV/Vishnu-s-Cosmic-Creation-Panorama.png" alt="Divya Darshan Image" class="darshan-responsive-img" />
+  </div>
+</div>
+      </div>
+      <div class="darshan-page-title">
+        <span class="hero-badge"><span>✨</span> BHAKTI KE SUNDAR PAL</span>
+        <h1 class="hero-title">Divya <span>Darshan</span></h1>
+        <p class="hero-desc">Bhagwan Shri Krishna, Mahadev aur Shri Hari Vishnu ki pavitra lilaon aur divya vani ka anubhav karein.</p>
+      </div>
+    </section>
+
+    <!-- DYNAMIC LILA & VANI CARDS SECTION -->
+    <section class="lila-section">
+      <div class="lila-grid" id="lilaGrid">
+        <!-- JavaScript se content dynamically load hoga data.js se -->
+      </div>
+    </section>
+
+
+    <!-- VIDEO CARD ADD-ON SECTION -->
+    <section class="video-addon-section">
+      <div class="section-header-box">
+        <span class="hero-badge"><span>🎥</span> AATMIK VIDEO DARSHAN</span>
+        <h2>Divya Vani aur Bhajan Video</h2>
+        <p>Bhakti se bhare un sundar video palon ko dekhein jo man ko alaukik shanti dete hain.</p>
+      </div>
+
+      <div class="video-grid">
+        <!-- VIDEO CARD 1 -->
+        <div class="video-card-golden">
+          <div class="embed-video-wrapper">
+            <!-- Yahan apna YouTube se mila iframe paste karein -->
+            <iframe src="https://www.youtube.com/embed/FkjDDRi3L6k?si=ouwxVfvyUHIwRxnv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="video-card-info">
+            <span class="article-meta">BHAJAN · DIVYA VANI</span>
+            <h3>Shri Krishna Dhun aur Bansuri Swar</h3>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+
+  </main>
+
+  <!-- MOBILE BOTTOM DOCK -->
+  <nav class="mobile-bottom-dock" aria-label="Mobile Navigation">
+    <a href="index.html" class="dock-item"><span>⌂</span><small>Home</small></a>
+    <a href="darshan.html" class="dock-item active"><span>🌅</span><small>Darshan</small></a>
+    <a href="thought.html" class="dock-item"><span>💡</span><small>Vichar</small></a>
+    <a href="articles.html" class="dock-item"><span>📖</span><small>Kathayein</small></a>
+  </nav>
+
+  
+ <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      // 1. Render Articles from data.js
+      const lilaGrid = document.getElementById("lilaGrid");
+      if (lilaGrid && typeof contentData !== "undefined" && contentData.darshanPage?.articles) {
+        lilaGrid.innerHTML = contentData.darshanPage.articles.map(article => `
+          <div class="lila-card" style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 24px; padding: 30px; margin-bottom: 24px;">
+            <span style="font-size: 0.75rem; color: var(--gold-primary); font-weight: 600; letter-spacing: 1px;">${article.category}</span>
+            <h3 style="font-family: var(--font-hindi); color: var(--gold-light); font-size: 1.6rem; margin: 10px 0;">${article.title}</h3>
+            <p style="color: var(--text-main); font-size: 1rem; line-height: 1.6; margin-bottom: 16px; font-weight: 500;">${article.intro}</p>
+            
+            <div style="margin-bottom: 20px;">
+              ${article.paragraphs.map(p => `
+                <h4 style="font-family: var(--font-hindi); color: var(--gold-primary); margin: 12px 0 4px 0; font-size: 1.1rem;">${p.heading}</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">${p.text}</p>
+              `).join('')}
+            </div>
+
+            <blockquote style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid var(--gold-primary); padding: 14px 18px; border-radius: 0 12px 12px 0; font-family: var(--font-hindi); color: var(--text-main); font-size: 1.05rem;">
+              "${article.verse}"
+            </blockquote>
+          </div>
+        `).join("");
+      }
+
+    
+   
+    });
+  </script>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      // 1. Render Articles from data.js
+      const lilaGrid = document.getElementById("lilaGrid");
+      if (lilaGrid && typeof contentData !== "undefined" && contentData.darshanPage?.articles) {
+        lilaGrid.innerHTML = contentData.darshanPage.articles.map(article => `
+          <div class="lila-card" style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 24px; padding: 30px; margin-bottom: 24px;">
+            <span style="font-size: 0.75rem; color: var(--gold-primary); font-weight: 600; letter-spacing: 1px;">${article.category}</span>
+            <h3 style="font-family: var(--font-hindi); color: var(--gold-light); font-size: 1.6rem; margin: 10px 0;">${article.title}</h3>
+            <p style="color: var(--text-main); font-size: 1rem; line-height: 1.6; margin-bottom: 16px; font-weight: 500;">${article.intro}</p>
+            
+            <div style="margin-bottom: 20px;">
+              ${article.paragraphs.map(p => `
+                <h4 style="font-family: var(--font-hindi); color: var(--gold-primary); margin: 12px 0 4px 0; font-size: 1.1rem;">${p.heading}</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">${p.text}</p>
+              `).join('')}
+            </div>
+
+            <blockquote style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid var(--gold-primary); padding: 14px 18px; border-radius: 0 12px 12px 0; font-family: var(--font-hindi); color: var(--text-main); font-size: 1.05rem;">
+              "${article.verse}"
+            </blockquote>
+          </div>
+        `).join("");
+      }
+
+      // 2. Render Videos from data.js
+      const videoGrid = document.getElementById("videoGrid");
+      if (videoGrid && typeof contentData !== "undefined" && contentData.darshanPage?.videos) {
+        videoGrid.innerHTML = contentData.darshanPage.videos.map(video => `
+          <a href="${video.youtubeUrl}" target="_blank" class="video-card" style="text-decoration: none; color: inherit; display: block; background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 20px; padding: 20px; transition: transform 0.3s ease;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+              <span class="article-meta" style="color: var(--gold-primary); font-size: 0.8rem; font-weight: 600;">${video.category}</span>
+              <span style="font-size: 1.2rem; color: var(--gold-light);">▶</span>
+            </div>
+            <h3 style="font-family: var(--font-hindi); color: #fff; font-size: 1.2rem; margin-bottom: 8px;">${video.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.4;">${video.desc}</p>
+          </a>
+        `).join("");
+      }
+    });
+  </script>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      // 1. Mobile Hamburger Menu Toggle Logic
+      const menuToggle = document.getElementById("menuToggle");
+      const desktopNav = document.getElementById("desktopNav");
+
+      if (menuToggle && desktopNav) {
+        menuToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+          menuToggle.setAttribute("aria-expanded", !isExpanded);
+          menuToggle.classList.toggle("active");
+          desktopNav.classList.toggle("mobile-open");
+        });
+
+        document.addEventListener("click", (e) => {
+          if (!menuToggle.contains(e.target) && !desktopNav.contains(e.target)) {
+            menuToggle.classList.remove("active");
+            desktopNav.classList.remove("mobile-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // 2. Cosmic Rays & Particle Stars Background Animation
+      const canvas = document.getElementById("cosmicBgCanvas");
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        window.addEventListener("resize", () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const particles = Array.from({ length: 65 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.8 + 0.5,
+          speedY: Math.random() * 0.4 + 0.1,
+          speedX: Math.random() * 0.2 - 0.1,
+          opacity: Math.random() * 0.7 + 0.2
+        }));
+
+        function animateCosmicBg() {
+          ctx.clearRect(0, 0, width, height);
+          
+          particles.forEach(p => {
+            p.y -= p.speedY;
+            p.x += p.speedX;
+
+            if (p.y < 0) {
+              p.y = height;
+              p.x = Math.random() * width;
+            }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(252, 211, 77, ${p.opacity})`;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = "#f59e0b";
+            ctx.fill();
+          });
+
+          requestAnimationFrame(animateCosmicBg);
+        }
+        animateCosmicBg();
+      }
+
+      // 3. Render Divya Darshan Articles from data.js
+      const lilaGrid = document.getElementById("lilaGrid");
+      if (lilaGrid && typeof contentData !== "undefined" && contentData.darshanPage?.articles) {
+        lilaGrid.innerHTML = contentData.darshanPage.articles.map(article => `
+          <div class="lila-card" style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 24px; padding: 30px; margin-bottom: 24px;">
+            <span style="font-size: 0.75rem; color: var(--gold-primary); font-weight: 600; letter-spacing: 1px;">${article.category}</span>
+            <h3 style="font-family: var(--font-hindi); color: var(--gold-light); font-size: 1.6rem; margin: 10px 0;">${article.title}</h3>
+            <p style="color: var(--text-main); font-size: 1rem; line-height: 1.6; margin-bottom: 16px; font-weight: 500;">${article.intro}</p>
+            
+            <div style="margin-bottom: 20px;">
+              ${article.paragraphs.map(p => `
+                <h4 style="font-family: var(--font-hindi); color: var(--gold-primary); margin: 12px 0 4px 0; font-size: 1.1rem;">${p.heading}</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">${p.text}</p>
+              `).join('')}
+            </div>
+
+            <blockquote style="background: rgba(245, 158, 11, 0.08); border-left: 3px solid var(--gold-primary); padding: 14px 18px; border-radius: 0 12px 12px 0; font-family: var(--font-hindi); color: var(--text-main); font-size: 1.05rem;">
+              "${article.verse}"
+            </blockquote>
+          </div>
+        `).join("");
+      }
+
+      // 4. Render YouTube Videos from data.js
+      const videoGrid = document.getElementById("videoGrid");
+      if (videoGrid && typeof contentData !== "undefined" && contentData.darshanPage?.videos) {
+        videoGrid.innerHTML = contentData.darshanPage.videos.map(video => `
+          <a href="${video.youtubeUrl}" target="_blank" class="video-card" style="text-decoration: none; color: inherit; display: block; background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 20px; padding: 20px; transition: transform 0.3s ease;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+              <span class="article-meta" style="color: var(--gold-primary); font-size: 0.8rem; font-weight: 600;">${video.category}</span>
+              <span style="font-size: 1.2rem; color: var(--gold-light);">▶</span>
+            </div>
+            <h3 style="font-family: var(--font-hindi); color: #fff; font-size: 1.2rem; margin-bottom: 8px;">${video.title}</h3>
+            <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.4;">${video.desc}</p>
+          </a>
+        `).join("");
+      }
+    });
+  </script>
+
+  <style>
+    /* =========================================
+   GOLDEN EMBEDDED VIDEO CONTAINER STYLING
+========================================= */
+
+.video-card-golden {
+  background: var(--bg-card);
+  border: 2px solid var(--gold-primary) !important; /* Premium Golden Outline */
+  border-radius: 24px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.15), 
+              inset 0 0 15px rgba(245, 158, 11, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.video-card-golden:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(245, 158, 11, 0.3);
+}
+
+.embed-video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid rgba(252, 211, 77, 0.3);
+}
+
+.embed-video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-card-info {
+  margin-top: 14px;
+  padding: 0 6px;
+}
+
+.video-card-info h3 {
+  font-family: var(--font-hindi);
+  color: var(--gold-light);
+  font-size: 1.25rem;
+  margin-top: 4px;
+}
+    .darshan-page-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 130px 20px 80px 20px;
+    }
+    .darshan-hero-slot {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .darshan-page-title {
+      margin-top: 30px;
+    }
+    .lila-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    .video-addon-section {
+      background: rgba(32, 19, 8, 0.4);
+      border: 1px solid var(--border-gold);
+      border-radius: 30px;
+      padding: 40px 30px;
+    }
+    .section-header-box {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .section-header-box h2 {
+      font-family: var(--font-hindi);
+      color: var(--gold-light);
+      font-size: 2.2rem;
+      margin: 10px 0;
+    }
+    .section-header-box p {
+      color: var(--text-muted);
+    }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-gold);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .video-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold-primary);
+    }
+    .video-thumbnail-frame {
+      position: relative;
+      height: 180px;
+    }
+    .video-thumbnail-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .play-icon-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--gold-light);
+      transition: background 0.3s;
+    }
+    .video-card:hover .play-icon-overlay {
+      background: rgba(0,0,0,0.2);
+    }
+    .video-info {
+      padding: 20px;
+    }
+    .video-info h3 {
+      font-family: var(--font-hindi);
+      color: #fff;
+      font-size: 1.2rem;
+      margin: 6px 0;
+    }
+    .video-info p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* =========================================
+   COSMIC BACKGROUND CANVAS (DARSHAN PAGE)
+========================================= */
+#cosmicBgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Background me piche rahega */
+  pointer-events: none;
+  background: transparent;
+}
+  </style>
+</body>
+</html>

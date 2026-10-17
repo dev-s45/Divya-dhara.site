@@ -1,480 +1,196 @@
-
 <!DOCTYPE html>
 <html lang="hi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f8f5ed" />
-  <meta name="description" content="Divya Dhara — bhakti, Sanatan gyaan, dharmik kathayein aur roz ka ek divya vichar." />
+  <meta name="theme-color" content="#120a04" />
   <title>Divya Dhara — Bhakti Ki Pavitra Dhara</title>
-
+  
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Hind:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
 
+  <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- JavaScript Files -->
+  <script src="data.js" defer></script>
   <script src="script.js" defer></script>
 </head>
-
 <body>
-  <div class="announcement">
-    <span class="announcement-dot"></span>
-    Har din ek nayi prerna, har pal divyata ka ehsaas
+
+  <!-- LOADING / SPLASH SCREEN -->
+  <div id="splashScreen">
+    <div class="splash-logo-wrapper">
+      <img src="assets/logo.png" alt="Divya Dhara Loading" onerror="this.src='https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=200&auto=format&fit=crop'" />
+    </div>
+    <h2 class="splash-title">Divya Dhara</h2>
+    <p class="splash-subtitle">भक्ति की पवित्र धारा</p>
   </div>
 
-  <header class="site-header" id="top">
-    <a href="#home" class="brand" aria-label="Divya Dhara home">
-      <span class="brand-symbol"><span><img src="assets/logo.png" style="width: 40px; height: 40px; border-radius: 50%;"></span></span>
-      <span class="brand-copy">
-        <span class="brand-name">Divya Dhara</span>
-        <span class="brand-tagline">भक्ति • ज्ञान • शांति</span>
-      </span>
+  <!-- FLOATING ISLAND NAVBAR -->
+<!-- FLOATING ISLAND NAVBAR -->
+  <header class="floating-nav-container">
+    <a href="index.html" class="brand-logo">
+      <img src="assets/logo.png" alt="Divya Dhara Logo" onerror="this.src='https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=100&auto=format&fit=crop'">
+      <div class="brand-text">
+        <h1>Divya Dhara</h1>
+        <span>भक्ति • ज्ञान • शांति</span>
+      </div>
     </a>
 
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a class="nav-link active" href="#home">Home</a>
-      <a class="nav-link" href="#darshan">Divya Darshan</a>
-      <a class="nav-link" href="#knowledge">Sanatan Gyaan</a>
-      <a class="nav-link" href="#thought">Aaj Ka Vichar</a>
-      <a class="nav-link" href="#articles">Kathayein</a>
+    <!-- Desktop Menu Navigation -->
+    <nav class="desktop-menu" id="desktopNav" aria-label="Desktop Navigation">
+      <a href="index.html" class="active">Home</a>
+      <a href="darshan.html">Darshan</a>
+      <a href="knowledge.html">Sanatan Gyaan</a>
+      <a href="thought.html">Aaj Ka Vichar</a>
+      <a href="articles.html">Kathayein</a>
     </nav>
 
-    <div class="header-actions">
-      <button class="icon-button search-toggle" id="searchToggle"
-        aria-label="Search" title="Search">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="10.8" cy="10.8" r="6.8"></circle>
-          <path d="m16 16 4.5 4.5"></path>
-        </svg>
-      </button>
-      <a href="#articles" class="header-cta">Gyaan Khojein <span>↗</span></a>
-      <button class="icon-button menu-toggle" id="menuToggle"
-        aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
-        <span></span><span></span>
+    <!-- Header Actions (CTA + Mobile Hamburger Toggle) -->
+    <div class="header-right-actions">
+      <a href="articles.html" class="nav-cta">Gyaan Khojein ↗</a>
+      
+      <!-- Hamburger Menu Button -->
+      <button class="mobile-hamburger-btn" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
   </header>
 
-  <div class="search-panel" id="searchPanel" hidden>
-    <div class="search-inner">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <circle cx="10.8" cy="10.8" r="6.8"></circle>
-        <path d="m16 16 4.5 4.5"></path>
-      </svg>
-      <input id="searchInput" type="search"
-        placeholder="Bhagavad Gita, Shri Ram, bhakti..."
-        aria-label="Search spiritual articles" />
-      <button id="clearSearch" class="clear-search" aria-label="Clear search">×</button>
-    </div>
-    <p class="search-hint" id="searchHint">Apne manpasand vishay ko khojein.</p>
-  </div>
-
-  <nav class="mobile-nav" id="mobileNav" hidden aria-label="Mobile navigation">
-    <a href="#home">Home <span>01</span></a>
-    <a href="#darshan">Divya Darshan <span>02</span></a>
-    <a href="#knowledge">Sanatan Gyaan <span>03</span></a>
-    <a href="#thought">Aaj Ka Vichar <span>04</span></a>
-    <a href="#articles">Dharmik Kathayein <span>05</span></a>
-    <a href="#about">Hamare Baare Mein <span>06</span></a>
-  </nav>
-
   <main>
-    <!-- HERO: Desktop and mobile use different visual compositions -->
-    <section class="hero section-shell" id="home">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="eyebrow-line"></span> EK DIVYA ANUBHAV</div>
-        <h1>Jahan bhakti mile,<br> <em>wahan shanti khile.</em></h1>
-        <p class="hero-description">
-          Apne mann ko jodiye Sanatan gyaan se, paiye jeevan ko
-          roshan karne wali kathayein aur har din ek nayi prerna.
-        </p>
-
-        <div class="hero-actions">
-          <a class="button button-primary" href="#knowledge">
-            Gyaan ki yatra shuru karein <span>↗</span>
-          </a>
-          <a class="text-link" href="#thought">Aaj ka vichar padhein <span>→</span></a>
-        </div>
-
-        <div class="hero-note">
-          <span class="hero-note-symbol">ॐ</span>
-          <span>श्रद्धा से ज्ञान तक, एक पवित्र यात्रा</span>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-image-frame">
-          <!-- HERO IMAGE SLOT: Replace the placeholder with your devotional image -->
-          <div class="image-placeholder hero-image-placeholder"
-            role="img" aria-label="Hero devotional image placeholder">
-            <span class="placeholder-om">ॐ</span>
-            <span class="placeholder-label">Aapki divya image yahan</span>
-            <span class="placeholder-subtitle">Hero image · 4:5 recommended</span>
+    <!-- HERO SECTION WITH DEDICATED DEVOTIONAL IMAGE SLOT -->
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-wrapper">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span>✨</span> EK DIVYA ANUBHAV
           </div>
-          <div class="image-caption">
-            <span class="caption-kicker">DIVYA DHARA PRESENTS</span>
-            <span class="caption-title">Antarman ki shanti</span>
-          </div>
-        </div>
-        <div class="hero-orbit orbit-one"></div>
-        <div class="hero-orbit orbit-two"></div>
-        <div class="floating-mantra">ॐ शान्तिः शान्तिः शान्तिः</div>
-      </div>
-
-      <div class="hero-bottom-line">
-        <span>एक पल अपने भीतर के प्रकाश के नाम</span>
-        <a href="#darshan" aria-label="Scroll to daily darshan">↓</a>
-      </div>
-    </section>
-
-    <!-- QUICK DISCOVERY -->
-    <section class="discovery section-shell" aria-label="Explore Divya Dhara">
-      <div class="section-intro">
-        <div>
-          <span class="eyebrow">AAPKI BHakti, AAPKI YATRA</span>
-          <h2>Divyata ko <em>khojiye.</em></h2>
-        </div>
-        <p>Apni ruchi ke anusaar chunein<br>aur gyaan ki yatra aage badhayein.</p>
-      </div>
-
-      <div class="discovery-grid">
-        <a class="discovery-card" href="#darshan">
-          <span class="discovery-icon">ॐ</span>
-          <span class="discovery-title">Divya Darshan</span>
-          <span class="discovery-desc">Bhakti ke sundar pal</span>
-          <span class="discovery-arrow">↗</span>
-        </a>
-        <a class="discovery-card" href="#knowledge">
-          <span class="discovery-icon">श्री</span>
-          <span class="discovery-title">Sanatan Gyaan</span>
-          <span class="discovery-desc">Gyaan jo raah dikhaye</span>
-          <span class="discovery-arrow">↗</span>
-        </a>
-        <a class="discovery-card" href="#thought">
-          <span class="discovery-icon">✺</span>
-          <span class="discovery-title">Aaj Ka Vichar</span>
-          <span class="discovery-desc">Har din ek nayi prerna</span>
-          <span class="discovery-arrow">↗</span>
-        </a>
-        <a class="discovery-card" href="#articles">
-          <span class="discovery-icon">❋</span>
-          <span class="discovery-title">Divya Kathayein</span>
-          <span class="discovery-desc">Kathaon mein chhipa gyaan</span>
-          <span class="discovery-arrow">↗</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- DARSHAN IMAGE GALLERY -->
-    <section class="darshan-section section-shell" id="darshan">
-      <div class="section-intro">
-        <div>
-          <span class="eyebrow">SHRADDHA AUR SAMARPAN</span>
-          <h2>Aaj ke <em>divya darshan.</em></h2>
-        </div>
-        <p>Bhakti ke un palon ko mehsoos karein<br>jo mann ko shanti dete hain.</p>
-      </div>
-
-      <div class="darshan-grid">
-        <article class="darshan-card darshan-tall">
-          <div class="image-placeholder darshan-image" role="img"
-            aria-label="Shri Ram devotional image placeholder">
-            <span class="placeholder-om">ॐ</span>
-            <span class="placeholder-label">Shri Ram image</span>
-          </div>
-          <div class="darshan-overlay">
-            <span class="darshan-category">MARYADA AUR DHARMA</span>
-            <h3>Shri Ram</h3>
-            <p>Satya aur kartavya ki prerna</p>
-          </div>
-          <button class="favorite-button" data-favorite="ram"
-            aria-label="Save Shri Ram to favourites" aria-pressed="false">♡</button>
-        </article>
-
-        <article class="darshan-card">
-          <div class="image-placeholder darshan-image" role="img"
-            aria-label="Mahadev devotional image placeholder">
-            <span class="placeholder-om">ॐ</span>
-            <span class="placeholder-label">Mahadev image</span>
-          </div>
-          <div class="darshan-overlay">
-            <span class="darshan-category">DHYAAN AUR SHANTI</span>
-            <h3>Mahadev</h3>
-            <p>Antarman ki sthirta</p>
-          </div>
-          <button class="favorite-button" data-favorite="mahadev"
-            aria-label="Save Mahadev to favourites" aria-pressed="false">♡</button>
-        </article>
-
-        <article class="darshan-card">
-          <div class="image-placeholder darshan-image" role="img"
-            aria-label="Shri Krishna devotional image placeholder">
-            <span class="placeholder-om">ॐ</span>
-            <span class="placeholder-label">Shri Krishna image</span>
-          </div>
-          <div class="darshan-overlay">
-            <span class="darshan-category">PREM AUR GYAAN</span>
-            <h3>Shri Krishna</h3>
-            <p>Jeevan ko samajhne ki drishti</p>
-          </div>
-          <button class="favorite-button" data-favorite="krishna"
-            aria-label="Save Shri Krishna to favourites" aria-pressed="false">♡</button>
-        </article>
-      </div>
-      <p class="section-footnote">Yahan apni original devotional images add karein.</p>
-    </section>
-
-    <!-- DAILY THOUGHT -->
-    <section class="thought-section" id="thought">
-      <div class="thought-inner section-shell">
-        <div class="thought-decoration" aria-hidden="true">“</div>
-        <div class="thought-copy">
-          <span class="eyebrow">AAJ KA DIVYA SANDESH</span>
-          <h2>Apne karm par vishwas rakhiye,<br><em>aur mann mein vishwas jagaye rakhiye.</em></h2>
-          <p class="thought-description">
-            Har din ek nayi shuruaat hai. Nishtha se kiya gaya karm,
-            dhairya aur saaf mann jeevan ki yatra ko arth dete hain.
+          <h1 class="hero-title">Jahan bhakti mile,<br><span>wahan shanti khile.</span></h1>
+          <p class="hero-desc">
+            Apne mann ko jodiye Sanatan gyaan se, paiye jeevan ko roshan karne wali kathayein aur har din ek nayi prerna.
           </p>
-          <div class="thought-actions">
-            <button class="button button-light" id="newThought">
-              Agla vichar <span>↗</span>
-            </button>
-            <button class="button button-outline-light" id="copyThought">
-              <span>▢</span> Vichar copy karein
-            </button>
+          <div class="hero-btn-group">
+            <a href="knowledge.html" class="hero-btn-primary">Gyaan Ki Yatra Shuru Karein ↗</a>
+            <a href="thought.html" class="hero-btn-secondary">Aaj Ka Vichar Padhein →</a>
           </div>
-          <p class="thought-feedback" id="thoughtFeedback" aria-live="polite"></p>
         </div>
-        <div class="thought-mark" aria-hidden="true">ॐ</div>
+
+        <!-- MOBILE DEVOTIONAL IMAGE SLOT (Desktop par CSS se hide ho jayega) -->
+        <div class="hero-image-slot mobile-only-image">
+          <div class="hero-img-frame">
+            <img src="https://i.postimg.cc/QxNrqn9D/Rama-and-Hanuman-s-Devotional-Embrace.png" alt="Divya Devotional Image" />
+            <div class="hero-img-badge">
+              <span class="symbol">ॐ</span>
+              <span>श्रद्धा से ज्ञान तक, एक पवित्र यात्रा</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-
-    <!-- KNOWLEDGE -->
-    <section class="knowledge-section section-shell" id="knowledge">
-      <div class="section-intro">
-        <div>
-          <span class="eyebrow">GYAAN JO JEEVAN SAWARE</span>
-          <h2>Sanatan gyaan,<br class="mobile-only"><em> saral shabdon mein.</em></h2>
-        </div>
-        <p>Pracheen gyaan ko samjhein<br>aur apne jeevan se jodein.</p>
-      </div>
-
-      <div class="knowledge-grid">
-        <a class="knowledge-card" href="#articles" data-topic="gita">
-          <div class="knowledge-art art-gita">
-            <span class="art-symbol">गीता</span>
-            <span class="art-label">01 / JEEVAN DARSHAN</span>
-          </div>
-          <div class="knowledge-content">
-            <span class="article-meta">BHAGAVAD GITA · 5 MIN READ</span>
-            <h3>Bhagavad Gita se jeevan ki 5 anmol seekhein</h3>
-            <p>Karm, dhairya aur mann ki shanti ko samajhne ka ek saral prayas.</p>
-            <span class="read-link">Gyaan padhein <span>→</span></span>
-          </div>
-        </a>
-
-        <a class="knowledge-card" href="#articles" data-topic="bhakti">
-          <div class="knowledge-art art-bhakti">
-            <span class="art-symbol">भक्ति</span>
-            <span class="art-label">02 / ANTARMAN</span>
-          </div>
-          <div class="knowledge-content">
-            <span class="article-meta">BHAKTI · 4 MIN READ</span>
-            <h3>Sachchi bhakti ka arth kya hai?</h3>
-            <p>Bhakti ko sirf pooja nahi, balki jeevan ki bhavna ke roop mein dekhein.</p>
-            <span class="read-link">Gyaan padhein <span>→</span></span>
-          </div>
-        </a>
-
-        <a class="knowledge-card" href="#articles" data-topic="dharma">
-          <div class="knowledge-art art-dharma">
-            <span class="art-symbol">धर्म</span>
-            <span class="art-label">03 / JEEVAN MARG</span>
-          </div>
-          <div class="knowledge-content">
-            <span class="article-meta">SANATAN GYAAN · 4 MIN READ</span>
-            <h3>Dharma aur kartavya mein kya sambandh hai?</h3>
-            <p>Apne kartavya ko samajhne aur sahi disha mein chalne ka vichar.</p>
-            <span class="read-link">Gyaan padhein <span>→</span></span>
-          </div>
-        </a>
-      </div>
+    <!-- DESKTOP QUICK ACCESS GRID -->
+    <section class="desktop-quick-grid" aria-label="Quick Access">
+      <a href="darshan.html" class="quick-card">
+        <span class="quick-icon">🌅</span>
+        <h3>Divya Darshan</h3>
+        <p>Bhakti ke sundar aur divya pal</p>
+      </a>
+      <a href="knowledge.html" class="quick-card">
+        <span class="quick-icon">📜</span>
+        <h3>Sanatan Gyaan</h3>
+        <p>Gyaan jo jeevan ki raah dikhaye</p>
+      </a>
+      <a href="thought.html" class="quick-card">
+        <span class="quick-icon">💡</span>
+        <h3>Aaj Ka Vichar</h3>
+        <p>Har din ek nayi aatmik prerna</p>
+      </a>
+      <a href="articles.html" class="quick-card">
+        <span class="quick-icon">📖</span>
+        <h3>Divya Kathayein</h3>
+        <p>Pauranik kathaon mein chhipa gyaan</p>
+      </a>
     </section>
 
-    <!-- ARTICLES -->
-    <section class="articles-section section-shell" id="articles">
-      <div class="section-intro articles-heading">
-        <div>
-          <span class="eyebrow">KATHAYEIN JO PRERNA DEIN</span>
-          <h2>Har katha mein <em>ek seekh.</em></h2>
+    <!-- MOBILE SEPARATE APP-STYLE LAYOUT -->
+    <section class="mobile-app-container" aria-label="Mobile View Options">
+      <a href="darshan.html" class="mobile-app-card">
+        <div class="mobile-card-info">
+          <h3>Divya Darshan</h3>
+          <p>Bhakti ke divya aur pavitra darshan</p>
         </div>
-        <span class="article-count" id="articleCount">06 rachnayein</span>
-      </div>
-
-      <div class="article-toolbar">
-        <div class="category-filters" role="group" aria-label="Filter articles">
-          <button class="filter-chip active" data-filter="all" aria-pressed="true">Sabhi</button>
-          <button class="filter-chip" data-filter="gita" aria-pressed="false">Bhagavad Gita</button>
-          <button class="filter-chip" data-filter="bhakti" aria-pressed="false">Bhakti</button>
-          <button class="filter-chip" data-filter="dharma" aria-pressed="false">Sanatan Gyaan</button>
-          <button class="filter-chip" data-filter="katha" aria-pressed="false">Pauranik Katha</button>
+        <div class="mobile-card-icon">🌅</div>
+      </a>
+      <a href="knowledge.html" class="mobile-app-card">
+        <div class="mobile-card-info">
+          <h3>Sanatan Gyaan</h3>
+          <p>Gyaan jo jeevan ki raah dikhaye</p>
         </div>
-      </div>
-
-      <div class="article-grid" id="articleGrid">
-        <article class="article-card" data-category="gita"
-          data-title="Bhagavad Gita ka karm yog" data-id="gita-karm">
-          <div class="article-cover cover-one">
-            <span>01</span><span class="cover-symbol">ॐ</span>
-            <span class="cover-label">JEEVAN DARSHAN</span>
-          </div>
-          <div class="article-card-body">
-            <span class="article-meta">BHAGAVAD GITA · 5 MIN</span>
-            <h3>Bhagavad Gita ka Karm Yog: apna kartavya samjhein</h3>
-            <p>Karm karne, prayas karne aur parinaam ko lekar santulit drishti rakhne ka sandesh.</p>
-            <button class="read-article" data-open-article="gita-karm">Poora padhein <span>↗</span></button>
-          </div>
-        </article>
-
-        <article class="article-card" data-category="bhakti"
-          data-title="Sachchi bhakti ka arth" data-id="sachchi-bhakti">
-          <div class="article-cover cover-two">
-            <span>02</span><span class="cover-symbol">श्री</span>
-            <span class="cover-label">BHAKTI MARG</span>
-          </div>
-          <div class="article-card-body">
-            <span class="article-meta">BHAKTI · 4 MIN</span>
-            <h3>Sachchi bhakti ka arth kya hai?</h3>
-            <p>Shraddha, vinamrata aur daya ko apne vyavahar mein jagah dene ki baat.</p>
-            <button class="read-article" data-open-article="sachchi-bhakti">Poora padhein <span>↗</span></button>
-          </div>
-        </article>
-
-        <article class="article-card" data-category="dharma"
-          data-title="Dharma aur kartavya" data-id="dharma-kartavya">
-          <div class="article-cover cover-three">
-            <span>03</span><span class="cover-symbol">धर्म</span>
-            <span class="cover-label">SANATAN GYAAN</span>
-          </div>
-          <div class="article-card-body">
-            <span class="article-meta">SANATAN GYAAN · 4 MIN</span>
-            <h3>Dharma aur kartavya ka jeevan mein mahatva</h3>
-            <p>Apne dayitvon ko imandari aur vivek ke saath nibhane ki prerna.</p>
-            <button class="read-article" data-open-article="dharma-kartavya">Poora padhein <span>↗</span></button>
-          </div>
-        </article>
-
-        <article class="article-card" data-category="katha"
-          data-title="Bhakt Prahlad ki katha" data-id="prahlad">
-          <div class="article-cover cover-four">
-            <span>04</span><span class="cover-symbol">❋</span>
-            <span class="cover-label">PAURANIK KATHA</span>
-          </div>
-          <div class="article-card-body">
-            <span class="article-meta">PAURANIK KATHA · 6 MIN</span>
-            <h3>Bhakt Prahlad ki katha aur unki atal shraddha</h3>
-            <p>Prahlad ki prasiddh katha se milne wali aastha aur sahas ki seekh.</p>
-            <button class="read-article" data-open-article="prahlad">Poora padhein <span>↗</span></button>
-          </div>
-        </article>
-
-        <article class="article-card" data-category="gita"
-          data-title="Mann ki shanti Gita" data-id="mann-shanti">
-          <div class="article-cover cover-five">
-            <span>05</span><span class="cover-symbol">शान्ति</span>
-            <span class="cover-label">ANTARMAN</span>
-          </div>
-          <div class="article-card-body">
-            <span class="article-meta">BHAGAVAD GITA · 4 MIN</span>
-            <h3>Bhagavad Gita ke anusar mann ki shanti</h3>
-            <p>Apne vicharon aur pratikriyaon ko samajhne ka ek saral nazariya.</p>
-            <button class="read-article" data-open-article="mann-shanti">Poora padhein <span>↗</span></button>
-          </div>
-        </article>
-
-        <article class="article-card" data-category="bhakti"
-          data-title="Rozmarra ke jeevan mein bhakti" data-id="daily-bhakti">
-          <div class="article-cover cover-six">
-            <span>06</span><span class="cover-symbol">दीप</span>
-            <span class="cover-label">DAILY BHAKTI</span>
-          </div>
-          <div class="article-card-body">
-            <span class="article-meta">BHAKTI · 3 MIN</span>
-            <h3>Rozmarra ke jeevan mein bhakti kaise jodein?</h3>
-            <p>Chhote-chhote achhe karm aur kritagyata se din ko arthpurn banayein.</p>
-            <button class="read-article" data-open-article="daily-bhakti">Poora padhein <span>↗</span></button>
-          </div>
-        </article>
-      </div>
-
-      <div class="empty-state" id="emptyState" hidden>
-        <span>ॐ</span>
-        <h3>Koi rachna nahi mili</h3>
-        <p>Dusra shabd khojein ya koi aur category chunein.</p>
-        <button class="button button-primary" id="resetFilters">Sabhi rachnayein dekhein</button>
-      </div>
-    </section>
-
-    <!-- READING MODAL -->
-    <div class="modal-backdrop" id="articleModal" hidden>
-      <article class="reading-modal" role="dialog" aria-modal="true"
-        aria-labelledby="modalTitle">
-        <div class="modal-topbar">
-          <span class="eyebrow">DIVYA DHARA · GYAAN PATH</span>
-          <button class="icon-button modal-close" id="modalClose" aria-label="Close article">×</button>
+        <div class="mobile-card-icon">📜</div>
+      </a>
+      <a href="thought.html" class="mobile-app-card">
+        <div class="mobile-card-info">
+          <h3>Aaj Ka Vichar</h3>
+          <p>Har din ek nayi aatmik prerna</p>
         </div>
-        <div class="reading-cover" id="modalCover"><span>ॐ</span></div>
-        <div class="reading-content">
-          <span class="article-meta" id="modalMeta"></span>
-          <h2 id="modalTitle"></h2>
-          <p class="reading-intro" id="modalIntro"></p>
-          <div class="reading-body" id="modalBody"></div>
-          <div class="reading-footer">
-            <button class="button button-primary" id="modalFavorite">♡ Save karein</button>
-            <button class="button button-soft" id="modalCopy">Sandesh copy karein</button>
-          </div>
-          <p class="thought-feedback" id="modalFeedback" aria-live="polite"></p>
+        <div class="mobile-card-icon">💡</div>
+      </a>
+      <a href="articles.html" class="mobile-app-card">
+        <div class="mobile-card-info">
+          <h3>Divya Kathayein</h3>
+          <p>Pauranik kathaon mein chhipa gyaan</p>
         </div>
-      </article>
-    </div>
-
-    <!-- ABOUT / NEWSLETTER -->
-    <section class="about-section section-shell" id="about">
-      <div class="about-mark">ॐ</div>
-      <div class="about-copy">
-        <span class="eyebrow">HAMARI BHAVNA</span>
-        <h2>Bhakti se judein.<br><em>Gyaan se aage badhein.</em></h2>
-        <p>
-          Divya Dhara ek aisa digital sthan hai jahan Sanatan parampara,
-          saral gyaan aur rozana ki prerna ek saath milti hai.
-        </p>
-      </div>
-      <a class="button button-primary about-cta" href="#top">Phir se shuru karein ↑</a>
+        <div class="mobile-card-icon">📖</div>
+      </a>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <a href="#home" class="footer-brand"><span><img src="assets/logo.png" style="width: 40px; height: 40px; border-radius: 50%;"></span> Divya Dhara</a>
-    <p>श्रद्धा • ज्ञान • शांति</p>
-    <p class="copyright">© <span id="currentYear"></span> Divya Dhara. Bhakti ki ek pavitra yatra.</p>
-  </footer>
+  <!-- FULL ARTICLE READING MODAL -->
+  <div class="modal-backdrop" id="articleModal" hidden>
+    <article class="reading-modal" role="dialog" aria-modal="true">
+      <div class="modal-topbar">
+        <span class="modal-eyebrow">DIVYA DHARA · GYAAN PATH</span>
+        <button class="modal-close" id="modalClose" aria-label="Close modal">×</button>
+      </div>
+      <div class="reading-content">
+        <span class="article-meta" id="modalMeta"></span>
+        <h2 id="modalTitle"></h2>
+        <p class="reading-intro" id="modalIntro"></p>
+        <div class="reading-body" id="modalBody"></div>
+        <div class="reading-footer">
+          <button class="hero-btn-primary" id="modalCopy">Sandesh Copy Karein 📋</button>
+        </div>
+      </div>
+    </article>
+  </div>
 
-  <!-- Mobile bottom navigation -->
-  <nav class="mobile-bottom-nav" aria-label="Quick navigation">
-    <a class="bottom-nav-item active" href="#home">
-      <span>⌂</span><small>Home</small>
+  <!-- MOBILE BOTTOM DOCK (iPhone Navigation) -->
+  <nav class="mobile-bottom-dock" aria-label="Mobile Bottom Navigation">
+    <a href="index.html" class="dock-item active">
+      <span>⌂</span>
+      <small>Home</small>
     </a>
-    <a class="bottom-nav-item" href="#darshan">
-      <span>ॐ</span><small>Darshan</small>
+    <a href="darshan.html" class="dock-item">
+      <span>🌅</span>
+      <small>Darshan</small>
     </a>
-    <a class="bottom-nav-item" href="#thought">
-      <span>✺</span><small>Vichar</small>
+    <a href="thought.html" class="dock-item">
+      <span>💡</span>
+      <small>Vichar</small>
     </a>
-    <a class="bottom-nav-item" href="#articles">
-      <span>▤</span><small>Gyaan</small>
+    <a href="articles.html" class="dock-item">
+      <span>📖</span>
+      <small>Kathayein</small>
     </a>
   </nav>
 
+  <!-- TOAST NOTIFICATION -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 </body>
 </html>
