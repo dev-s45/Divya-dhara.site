@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#120a04" />
+  <title>Sanatan Gyaan — Divya Dhara</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+  <!-- Open Graph / WhatsApp / Facebook Meta Tags for Sanatan Gyaan -->
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://divyadhara.org/knowledge.html" />
+<meta property="og:title" content="Sanatan Gyaan Aur Shiksha — Divya Dhara" />
+<meta property="og:description" content="Vedas, Upanishads, Geeta saar aur Sanatan Dharma ke ghanisht aatmik gyaan aur shaswat vicharon ka vishal sangrah." />
+<meta property="og:image" content="https://i.postimg.cc/vmSR4y7p/Krishna-s-Cosmic-Teaching-on-the-Battlefield.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Divya Dhara" />
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://divyadhara.org/knowledge.html" />
+<meta name="twitter:title" content="Sanatan Gyaan Aur Shiksha — Divya Dhara" />
+<meta name="twitter:description" content="Vedas, Upanishads, Geeta saar aur Sanatan Dharma ke ghanisht aatmik gyaan aur shaswat vicharon ka vishal sangrah." />
+<meta name="twitter:image" content="https://i.postimg.cc/vmSR4y7p/Krishna-s-Cosmic-Teaching-on-the-Battlefield.png" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="data.js" defer></script>
+</head>
+<body>
+
+  <!-- Cosmic Particles Background Layer -->
+  <canvas id="cosmicBgCanvas"></canvas>
+
+  <!-- FLOATING NAVBAR -->
+  <header class="floating-nav-container">
+    <a href="index.html" class="brand-logo">
+      <img src="assets/logo.png" alt="Logo" onerror="this.src='https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=100&auto=format&fit=crop'">
+      <div class="brand-text">
+        <h1>Divya Dhara</h1>
+        <span>भक्ति • ज्ञान • शांति</span>
+      </div>
+    </a>
+
+    <nav class="desktop-menu" id="desktopNav" aria-label="Desktop Navigation">
+      <a href="index.html">Home</a>
+      <a href="darshan.html">Darshan</a>
+      <a href="knowledge.html" class="active">Sanatan Gyaan</a>
+      <a href="thought.html">Aaj Ka Vichar</a>
+      <a href="articles.html">Kathayein</a>
+    </nav>
+
+    <div class="header-right-actions">
+     <a href="#" class="nav-cta">Insta pe Jude ↗</a>
+      
+      <button class="mobile-hamburger-btn" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+  
+
+  <main class="knowledge-page-main" style="max-width: 1000px; margin: 0 auto; padding: 130px 20px 80px 20px;">
+    
+    
+    <!-- RESPECTFUL & PROFESSIONAL HERO HEADER -->
+    <section style="text-align: center; margin-bottom: 40px;">
+      <span class="hero-badge"><span>🪔</span> SHASWAT DIKSHA AUR DHARMA MARG</span>
+            <div class="darshan-image-container">
+  <div class="darshan-img-frame">
+    <!-- Yahan apna image path lagayein -->
+    <img src="https://i.postimg.cc/vmSR4y7p/Krishna-s-Cosmic-Teaching-on-the-Battlefield.png" alt="Divya Darshan Image" class="darshan-responsive-img" />
+  </div>
+      <h1 class="hero-title" style="margin-top: 15px;">Sanatan <span>Gyaan</span></h1>
+      <p class="hero-desc">Pracheen Rishi-Muniyon, Pavitra Charitron aur Shaswat Granthon se Prapt Aatmik Chetna, Kartavya aur Shanti Ka Marg.</p>
+    </section>
+
+    <!-- CATEGORY FILTER TABS -->
+    <div id="categoryTabs" style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+      <!-- Dynamic Tabs from data.js -->
+    </div>
+
+    <!-- DYNAMIC KNOWLEDGE CONTAINER -->
+    <section id="knowledgeContainer" style="display: grid; gap: 28px;">
+      <!-- Dynamic Cards from data.js -->
+    </section>
+
+  </main>
+
+  <!-- MOBILE BOTTOM DOCK -->
+  <nav class="mobile-bottom-dock" aria-label="Mobile Navigation">
+    <a href="index.html" class="dock-item"><span>⌂</span><small>Home</small></a>
+    <a href="darshan.html" class="dock-item"><span>🌅</span><small>Darshan</small></a>
+    <a href="knowledge.html" class="dock-item active"><span>🪔</span><small>Gyaan</small></a>
+    <a href="thought.html" class="dock-item"><span>💡</span><small>Vichar</small></a>
+    <a href="articles.html" class="dock-item"><span>📖</span><small>Kathayein</small></a>
+  </nav>
+
+  <!-- SCRIPT FOR DYNAMIC RENDERING & INTERACTIONS -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      // 1. Mobile Navigation Hamburger Menu Toggle
+      const menuToggle = document.getElementById("menuToggle");
+      const desktopNav = document.getElementById("desktopNav");
+      if (menuToggle && desktopNav) {
+        menuToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+          menuToggle.setAttribute("aria-expanded", !isExpanded);
+          menuToggle.classList.toggle("active");
+          desktopNav.classList.toggle("mobile-open");
+        });
+        document.addEventListener("click", (e) => {
+          if (!menuToggle.contains(e.target) && !desktopNav.contains(e.target)) {
+            menuToggle.classList.remove("active");
+            desktopNav.classList.remove("mobile-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // 2. Cosmic Background Floating Particle Animation
+      const canvas = document.getElementById("cosmicBgCanvas");
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        window.addEventListener("resize", () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const particles = Array.from({ length: 60 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.6 + 0.5,
+          speedY: Math.random() * 0.35 + 0.1,
+          speedX: Math.random() * 0.2 - 0.1,
+          opacity: Math.random() * 0.7 + 0.2
+        }));
+
+        function animateCosmicBg() {
+          ctx.clearRect(0, 0, width, height);
+          particles.forEach(p => {
+            p.y -= p.speedY;
+            p.x += p.speedX;
+            if (p.y < 0) {
+              p.y = height;
+              p.x = Math.random() * width;
+            }
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(252, 211, 77, ${p.opacity})`;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = "#f59e0b";
+            ctx.fill();
+          });
+          requestAnimationFrame(animateCosmicBg);
+        }
+        animateCosmicBg();
+      }
+
+      // 3. Dynamic Knowledge Cards Rendering & Filter Logic
+      const container = document.getElementById("knowledgeContainer");
+      const tabsBox = document.getElementById("categoryTabs");
+
+      if (typeof contentData !== "undefined" && contentData.knowledgePage) {
+        const { categories, articles } = contentData.knowledgePage;
+
+        function renderArticles(selectedCategory = "SABHI") {
+          const filtered = selectedCategory === "SABHI" 
+            ? articles 
+            : articles.filter(a => a.category === selectedCategory);
+
+          container.innerHTML = filtered.map(item => `
+            <div style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 24px; padding: 32px; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+              <span style="font-size: 0.75rem; color: var(--gold-primary); font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;">${item.category}</span>
+              <h2 style="font-family: var(--font-hindi); color: var(--gold-light); font-size: 1.8rem; margin: 8px 0 4px 0;">${item.title}</h2>
+              <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">${item.subtitle}</p>
+              
+              <p style="color: var(--text-main); font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px;">${item.summary}</p>
+
+              <div style="background: rgba(18, 10, 4, 0.6); border-radius: 16px; padding: 20px; margin-bottom: 24px; border: 1px solid rgba(245, 158, 11, 0.2);">
+                ${item.lessons.map(pt => `
+                  <div style="margin-bottom: 12px;">
+                    <h4 style="font-family: var(--font-hindi); color: var(--gold-primary); font-size: 1.1rem; margin-bottom: 4px;">✦ ${pt.heading}</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.5;">${pt.detail}</p>
+                  </div>
+                `).join('')}
+              </div>
+
+              <blockquote style="background: rgba(245, 158, 11, 0.1); border-left: 3px solid var(--gold-primary); padding: 14px 18px; border-radius: 0 12px 12px 0; font-family: var(--font-hindi); color: var(--gold-light); font-size: 1.1rem; font-style: italic;">
+                "${item.quote}"
+              </blockquote>
+            </div>
+          `).join('');
+        }
+
+        // Render Filter Buttons
+        tabsBox.innerHTML = categories.map((cat, index) => `
+          <button class="tab-btn ${index === 0 ? 'active' : ''}" data-cat="${cat}" style="background: ${index === 0 ? 'var(--gold-gradient)' : 'rgba(245, 158, 11, 0.1)'}; border: 1px solid var(--border-gold); color: ${index === 0 ? '#120a04' : 'var(--gold-light)'}; padding: 8px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+            ${cat}
+          </button>
+        `).join('');
+
+        // Tab Click Events
+        tabsBox.querySelectorAll('.tab-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            tabsBox.querySelectorAll('.tab-btn').forEach(b => {
+              b.style.background = 'rgba(245, 158, 11, 0.1)';
+              b.style.color = 'var(--gold-light)';
+            });
+            btn.style.background = 'var(--gold-gradient)';
+            btn.style.color = '#120a04';
+
+            renderArticles(btn.getAttribute('data-cat'));
+          });
+        });
+
+        // Initial Load
+        renderArticles();
+      }
+    });
+  </script>
+  <style>#cosmicBgCanvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -1 !important; /* Background me le jane ke liye */
+  pointer-events: none !important; /* Touch/Click block na ho */
+  display: block !important;
+}</style>
+</body>
+</html>

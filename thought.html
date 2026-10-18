@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#120a04" />
+  <title>Aaj Ka Vichar — Divya Dhara</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+  <!-- Open Graph / WhatsApp / Facebook Meta Tags for Aaj Ka Vichar -->
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://divyadhara.org/thought.html" />
+<meta property="og:title" content="Aaj Ka Divya Vichar — Divya Dhara" />
+<meta property="og:description" content="Har din ek nayi aatmik chetna, satya ka prakash aur shaswat subhashit jo aapke man ko sthir aur shant rakhein." />
+<meta property="og:image" content="https://i.postimg.cc/7hwNDGGx/Sage-Writing-Beneath-the-Mountain-Sunrise.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content="Divya Dhara" />
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content="https://divyadhara.org/thought.html" />
+<meta name="twitter:title" content="Aaj Ka Divya Vichar — Divya Dhara" />
+<meta name="twitter:description" content="Har din ek nayi aatmik chetna, satya ka prakash aur shaswat subhashit jo aapke man ko sthir aur shant rakhein." />
+<meta name="twitter:image" content="https://i.postimg.cc/7hwNDGGx/Sage-Writing-Beneath-the-Mountain-Sunrise.png" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="data.js" defer></script>
+</head>
+<body>
+
+  <!-- Cosmic Particles Background Canvas -->
+  <canvas id="cosmicBgCanvas"></canvas>
+
+  <!-- FLOATING NAVBAR -->
+  <header class="floating-nav-container">
+    <a href="index.html" class="brand-logo">
+      <img src="assets/logo.png" alt="Logo" onerror="this.src='https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=100&auto=format&fit=crop'">
+      <div class="brand-text">
+        <h1>Divya Dhara</h1>
+        <span>भक्ति • ज्ञान • शांति</span>
+      </div>
+    </a>
+
+    <nav class="desktop-menu" id="desktopNav" aria-label="Desktop Navigation">
+      <a href="index.html">Home</a>
+      <a href="darshan.html">Darshan</a>
+      <a href="knowledge.html">Sanatan Gyaan</a>
+      <a href="thought.html" class="active">Aaj Ka Vichar</a>
+      <a href="articles.html">Kathayein</a>
+    </nav>
+
+    <div class="header-right-actions">
+<a href="#" class="nav-cta">Insta pe Jude ↗</a>
+      
+      <button class="mobile-hamburger-btn" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="thought-page-main" style="max-width: 950px; margin: 0 auto; padding: 100px 20px 60px 20px;">
+    
+    <!-- HEADER TITLE -->
+    <section style="text-align: center; margin-bottom: 35px;">
+      <span class="hero-badge"><span>💡</span> SHASWAT SUBHASHIT AUR PRERNA</span>
+      <div class="darshan-image-container">
+  <div class="darshan-img-frame">
+    <!-- Yahan apna image path lagayein -->
+    <img src="https://i.postimg.cc/7hwNDGGx/Sage-Writing-Beneath-the-Mountain-Sunrise.png" alt="Divya Darshan Image" class="darshan-responsive-img" />
+  </div>
+      <h1 class="hero-title" style="margin-top: 15px;">Aaj Ka <span>Vichar</span></h1>
+      <p class="hero-desc">Dainik divya vichar aur aatmik prerna. Card par click karke poora vichar padhein.</p>
+    </section>
+
+    <!-- NEW / RECENT THOUGHTS SECTION -->
+    <section style="margin-bottom: 40px;">
+      <h2 style="font-family: var(--font-hindi); color: var(--gold-light); font-size: 1.4rem; margin-bottom: 20px; border-bottom: 1px solid rgba(245, 158, 11, 0.2); padding-bottom: 8px;">
+        ✨ Haal Hi Ke Divya Vichar
+      </h2>
+      <div id="newThoughtsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <!-- JS Dynamic Data -->
+      </div>
+    </section>
+
+    <!-- ARCHIVE / OLD THOUGHTS SECTION -->
+    <section style="margin-bottom: 40px;">
+      <h2 style="font-family: var(--font-hindi); color: var(--text-muted); font-size: 1.3rem; margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 8px;">
+        📜 Purane Vichar Sangrah (Archive)
+      </h2>
+      <div id="oldThoughtsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <!-- JS Dynamic Data -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- POPUP MODAL FOR DETAILED VICHAR -->
+  <div id="thoughtModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+    <div style="background: linear-gradient(135deg, rgba(30, 15, 5, 0.95), rgba(18, 10, 4, 0.98)); border: 2px solid var(--border-gold); border-radius: 24px; max-width: 650px; width: 100%; padding: 30px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; animation: modalFadeIn 0.3s ease;">
+      
+      <!-- Close Button -->
+      <button id="closeModal" style="position: absolute; top: 16px; right: 20px; background: none; border: none; color: var(--gold-light); font-size: 1.8rem; cursor: pointer;">&times;</button>
+
+      <span id="modalDateCat" style="color: var(--gold-primary); font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;"></span>
+      
+      <h2 id="modalTitle" style="font-family: var(--font-hindi); color: var(--gold-light); font-size: 1.6rem; margin: 12px 0;"></h2>
+
+      <blockquote id="modalVerse" style="background: rgba(245, 158, 11, 0.1); border-left: 3px solid var(--gold-primary); padding: 12px 16px; border-radius: 0 10px 10px 0; font-family: var(--font-hindi); color: #fff; font-size: 1.1rem; margin-bottom: 20px;"></blockquote>
+
+      <p id="modalContent" style="color: var(--text-main); font-size: 1rem; line-height: 1.7; margin-bottom: 30px;"></p>
+
+      <!-- MODAL FOOTER: SIGNATURE & SHARE BUTTONS -->
+      <!-- MODAL FOOTER: SIGNATURE & SMART SHARE BUTTONS -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(245, 158, 11, 0.2); padding-top: 20px; flex-wrap: wrap; gap: 12px;">
+        <!-- Left Signature -->
+        <span style="font-family: var(--font-hindi); color: var(--gold-primary); font-size: 0.95rem; font-style: italic; font-weight: 600;">
+          — By Divya Dhara
+        </span>
+
+        <!-- Right Modern Share Buttons -->
+        <div style="display: flex; gap: 10px;">
+          <!-- Multi-App Native Share Button -->
+          <button id="smartShareBtn" style="background: var(--gold-gradient); color: #120a04; border: none; padding: 10px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.25); transition: transform 0.2s ease;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <span>Share Vichar</span>
+          </button>
+
+          <!-- Copy Link Button -->
+          <button id="copyShareBtn" style="background: rgba(245, 158, 11, 0.12); color: var(--gold-light); border: 1px solid var(--border-gold); padding: 10px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 0.2s ease;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span>Copy Link</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MOBILE BOTTOM DOCK -->
+  <nav class="mobile-bottom-dock" aria-label="Mobile Navigation">
+    <a href="index.html" class="dock-item"><span>⌂</span><small>Home</small></a>
+    <a href="darshan.html" class="dock-item"><span>🌅</span><small>Darshan</small></a>
+    <a href="knowledge.html" class="dock-item"><span>🪔</span><small>Gyaan</small></a>
+    <a href="thought.html" class="dock-item active"><span>💡</span><small>Vichar</small></a>
+    <a href="articles.html" class="dock-item"><span>📖</span><small>Kathayein</small></a>
+  </nav>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      // 1. Mobile Menu Logic
+      const menuToggle = document.getElementById("menuToggle");
+      const desktopNav = document.getElementById("desktopNav");
+      if (menuToggle && desktopNav) {
+        menuToggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+          menuToggle.setAttribute("aria-expanded", !isExpanded);
+          menuToggle.classList.toggle("active");
+          desktopNav.classList.toggle("mobile-open");
+        });
+        document.addEventListener("click", (e) => {
+          if (!menuToggle.contains(e.target) && !desktopNav.contains(e.target)) {
+            menuToggle.classList.remove("active");
+            desktopNav.classList.remove("mobile-open");
+            menuToggle.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // 2. Cosmic Background Animation
+      const canvas = document.getElementById("cosmicBgCanvas");
+      if (canvas) {
+        const ctx = canvas.getContext("2d");
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        window.addEventListener("resize", () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const particles = Array.from({ length: 60 }, () => ({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          radius: Math.random() * 1.6 + 0.5,
+          speedY: Math.random() * 0.35 + 0.1,
+          speedX: Math.random() * 0.2 - 0.1,
+          opacity: Math.random() * 0.7 + 0.2
+        }));
+
+        function animate() {
+          ctx.clearRect(0, 0, width, height);
+          particles.forEach(p => {
+            p.y -= p.speedY;
+            p.x += p.speedX;
+            if (p.y < 0) {
+              p.y = height;
+              p.x = Math.random() * width;
+            }
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(252, 211, 77, ${p.opacity})`;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = "#f59e0b";
+            ctx.fill();
+          });
+          requestAnimationFrame(animate);
+        }
+        animate();
+      }
+
+      // 3. Dynamic Date Calculation & Cards Rendering
+      const newGrid = document.getElementById("newThoughtsGrid");
+      const oldGrid = document.getElementById("oldThoughtsGrid");
+      const modal = document.getElementById("thoughtModal");
+      const closeModal = document.getElementById("closeModal");
+
+      let selectedThought = null;
+
+      function getDaysDiff(itemDate) {
+        const today = new Date();
+        const dateObj = new Date(itemDate);
+        const diffTime = Math.abs(today - dateObj);
+        return Math.floor(diffTime / (1000 * 60 * 60 * 24));
+      }
+
+      if (typeof contentData !== "undefined" && contentData.thoughtPage?.thoughts) {
+        const list = contentData.thoughtPage.thoughts;
+
+        let newHtml = "";
+        let oldHtml = "";
+
+        list.forEach(item => {
+          const daysOld = getDaysDiff(item.date);
+          const isNew = daysOld <= 2; // 0 to 2 days = NEW tag
+
+          const cardMarkup = `
+            <div class="thought-card" data-id="${item.id}" style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: 20px; padding: 22px; cursor: pointer; transition: all 0.3s ease; position: relative;">
+              <div style="display: flex; justify-content: space-between; align-align: center; margin-bottom: 10px;">
+                <span style="color: var(--gold-primary); font-size: 0.75rem; font-weight: 700;">${item.date} · ${item.category}</span>
+                <span style="background: ${isNew ? 'rgba(245, 158, 11, 0.2)' : 'rgba(255, 255, 255, 0.1)'}; color: ${isNew ? 'var(--gold-light)' : '#aaa'}; border: 1px solid ${isNew ? 'var(--border-gold)' : 'rgba(255,255,255,0.2)'}; padding: 2px 10px; border-radius: 12px; font-size: 0.7rem; font-weight: 700;">
+                  ${isNew ? '✨ NEW' : 'OLD'}
+                </span>
+              </div>
+              <h3 style="font-family: var(--font-hindi); color: #fff; font-size: 1.2rem; margin-bottom: 8px;">${item.title}</h3>
+              <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.5; margin-bottom: 14px;">${item.preview}</p>
+              <span style="color: var(--gold-primary); font-size: 0.8rem; font-weight: 600;">Poora Vichar Padhein ↗</span>
+            </div>
+          `;
+
+          if (isNew) {
+            newHtml += cardMarkup;
+          } else {
+            oldHtml += cardMarkup;
+          }
+        });
+
+        if (newGrid) newGrid.innerHTML = newHtml || "<p style='color:#aaa;'>Koi naya vichar nahi hai.</p>";
+        if (oldGrid) oldGrid.innerHTML = oldHtml || "<p style='color:#aaa;'>Archive khali hai.</p>";
+
+        // Click Event to Open Modal
+        document.querySelectorAll('.thought-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const id = card.getAttribute('data-id');
+            selectedThought = list.find(t => t.id === id);
+
+            if (selectedThought) {
+              document.getElementById("modalDateCat").innerText = `${selectedThought.date} · ${selectedThought.category}`;
+              document.getElementById("modalTitle").innerText = selectedThought.title;
+              document.getElementById("modalVerse").innerText = selectedThought.verse;
+              document.getElementById("modalContent").innerText = selectedThought.fullContent;
+              
+              modal.style.display = "flex";
+            }
+          });
+        });
+
+        // Close Modal
+        closeModal.addEventListener('click', () => {
+          modal.style.display = "none";
+        });
+
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) modal.style.display = "none";
+        });
+
+        // Multi-Platform Native Share Logic (Insta, WhatsApp, Telegram, Twitter, etc.)
+        document.getElementById("smartShareBtn").addEventListener("click", async () => {
+          if (!selectedThought) return;
+          
+          const siteUrl = window.location.href.split('?')[0] + `?id=${selectedThought.id}`;
+          const shareTitle = `Divya Dhara — ${selectedThought.title}`;
+          const shareText = `🪔 Divya Dhara — Aaj Ka Vichar 🪔\n\n"${selectedThought.title}"\n\n${selectedThought.fullContent}\n\n— By Divya Dhara\n`;
+
+          // Check if Device Supports Multi-App Native Sharing
+          if (navigator.share) {
+            try {
+              await navigator.share({
+                title: shareTitle,
+                text: shareText,
+                url: siteUrl
+              });
+            } catch (err) {
+              console.log("Share cancelled or failed:", err);
+            }
+          } else {
+            // Fallback for Desktop/Older Browsers -> WhatsApp Direct
+            const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + "\n" + siteUrl)}`;
+            window.open(whatsappUrl, '_blank');
+          }
+        });
+
+        // Copy Link Logic with Feedback
+        const copyBtn = document.getElementById("copyShareBtn");
+        copyBtn.addEventListener("click", () => {
+          if (!selectedThought) return;
+          const siteUrl = window.location.href.split('?')[0] + `?id=${selectedThought.id}`;
+          
+          navigator.clipboard.writeText(siteUrl).then(() => {
+            const originalText = copyBtn.innerHTML;
+            copyBtn.innerHTML = `
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span style="color: var(--gold-primary);">Copied!</span>
+            `;
+            setTimeout(() => {
+              copyBtn.innerHTML = originalText;
+            }, 2000);
+          });
+        });
+      }
+    });
+  </script>
+
+  <style>
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+  <style>#cosmicBgCanvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -1 !important; /* Background me le jane ke liye */
+  pointer-events: none !important; /* Touch/Click block na ho */
+  display: block !important;
+}</style>
+</body>
+</html>
